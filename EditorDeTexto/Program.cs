@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 
 namespace EditorDeTexto {
     class Program {
@@ -32,12 +33,26 @@ namespace EditorDeTexto {
             Console.WriteLine("Digite seu texto abaixo (ESC para sair)...");
             Console.WriteLine("------------------------------------------");
 
-            string texto;
+            string texto = "";
 
-            while(Console.ReadKey().Key != ConsoleKey.Escape) {
-
+            do {
+                texto += Console.ReadLine();
+                texto += Environment.NewLine;
             }
+            while (Console.ReadKey().Key != ConsoleKey.Escape);
 
+            Console.Write(texto);
+        }
+
+        static void Salvar(string texto) {
+            Console.Clear();
+            Console.WriteLine("Qual caminho para salvar o arquivo?");
+
+            var caminho = Console.ReadLine();
+
+            using (var arquivo = new StreamWriter(caminho)) {
+                arquivo.Write(texto);
+            }
         }
     }
 }
