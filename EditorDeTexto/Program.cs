@@ -28,6 +28,15 @@ namespace EditorDeTexto {
         }
 
         static void Editar() {
+            Console.Clear();
+            Console.WriteLine("Digite seu texto abaixo (ESC para sair)...");
+            Console.WriteLine("------------------------------------------");
+
+            string texto;
+
+            while(Console.ReadKey().Key != ConsoleKey.Escape) {
+
+            }
 
         }
     }
