@@ -1,5 +1,6 @@
 ﻿using System;
 using System.IO;
+using System.Threading;
 
 namespace EditorDeTexto {
     class Program {
@@ -41,18 +42,22 @@ namespace EditorDeTexto {
             }
             while (Console.ReadKey().Key != ConsoleKey.Escape);
 
-            Console.Write(texto);
+            Salvar(texto);
         }
 
         static void Salvar(string texto) {
             Console.Clear();
-            Console.WriteLine("Qual caminho para salvar o arquivo?");
+            Console.WriteLine(" Qual caminho para salvar o arquivo?");
 
             var caminho = Console.ReadLine();
 
             using (var arquivo = new StreamWriter(caminho)) {
                 arquivo.Write(texto);
             }
+
+            Console.WriteLine(" Arquivo " + caminho + " salvo com sucesso!");
+            Thread.Sleep(5000);
+            Menu();
         }
     }
 }
